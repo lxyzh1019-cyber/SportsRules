@@ -173,6 +173,124 @@ h1{
 @keyframes rise{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
 @keyframes fade{from{opacity:0;}to{opacity:1;}}
 .card{position:relative;}
+
+/* ---------- QUIZ ---------- */
+.quiz-cta{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center;margin-top:10px;}
+.btn-quiz{
+  font-family:'Baloo 2',cursive;font-weight:800;font-size:1.05rem;
+  background:var(--coral);color:#fff;border:2.5px solid var(--ink);
+  border-bottom-width:5px;border-radius:14px;padding:10px 18px;cursor:pointer;
+  transition:transform .12s;
+}
+.btn-quiz:hover{transform:translateY(-2px);}
+.btn-quiz:active{transform:translateY(2px);border-bottom-width:2.5px;}
+.best-badge{
+  font-family:'Baloo 2',cursive;font-weight:700;color:var(--ink);
+  background:var(--gold);border:2px solid var(--ink);border-radius:999px;
+  padding:6px 12px;font-size:.9rem;
+}
+.quiz-card{
+  background:#fff;border:2.5px solid var(--ink);border-radius:20px;
+  padding:22px 18px;margin-top:18px;box-shadow:0 6px 0 var(--shadow);
+  animation:rise .4s ease both;
+}
+.quiz-card h3{
+  font-family:'Baloo 2',cursive;font-weight:800;margin:0 0 14px;
+  color:var(--ink);font-size:1.3rem;
+}
+.quiz-row{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0;align-items:center;}
+.quiz-row label{font-family:'Baloo 2',cursive;font-weight:700;color:var(--ink-soft);min-width:90px;}
+.chip{
+  font-family:'Baloo 2',cursive;font-weight:700;
+  background:#fff;color:var(--ink);border:2.5px solid var(--ink);
+  border-bottom-width:4px;border-radius:12px;padding:8px 16px;cursor:pointer;
+  transition:transform .12s;
+}
+.chip:hover{transform:translateY(-2px);}
+.chip.on{background:var(--blue);color:#fff;border-color:#1f4fa0;box-shadow:0 4px 0 #1f4fa0;}
+.chip.on.coral{background:var(--coral);border-color:#a04138;box-shadow:0 4px 0 #a04138;}
+.diff-desc{font-size:.85rem;color:var(--ink-soft);font-weight:700;margin-top:6px;}
+.quiz-progress{
+  font-family:'Baloo 2',cursive;font-weight:700;color:var(--ink-soft);
+  font-size:.95rem;margin-bottom:8px;
+}
+.progress-bar{
+  height:10px;background:var(--paper-2);border-radius:999px;border:2px solid var(--ink);
+  overflow:hidden;margin-bottom:14px;
+}
+.progress-bar > div{height:100%;background:var(--blue);transition:width .25s;}
+.quiz-prompt{
+  font-family:'Baloo 2',cursive;font-weight:800;color:var(--ink);
+  font-size:1.15rem;margin:8px 0 14px;line-height:1.3;
+}
+.quiz-img{
+  display:block;max-width:100%;max-height:280px;margin:0 auto 14px;
+  border-radius:14px;border:2px solid var(--ink);background:var(--paper-2);
+}
+.quiz-options{display:grid;grid-template-columns:1fr;gap:10px;}
+@media(min-width:560px){.quiz-options.cols-2{grid-template-columns:1fr 1fr;}}
+.quiz-option{
+  font-family:'Nunito',sans-serif;font-weight:700;font-size:1rem;text-align:left;
+  background:#fff;color:var(--ink);border:2.5px solid var(--ink);
+  border-bottom-width:4px;border-radius:14px;padding:14px 16px;cursor:pointer;
+  min-height:48px;transition:transform .1s, background .1s;
+  display:flex;align-items:center;gap:10px;
+}
+.quiz-option .num{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:26px;height:26px;border-radius:50%;background:var(--paper-2);
+  border:2px solid var(--ink);font-family:'Baloo 2',cursive;font-weight:800;
+  font-size:.85rem;flex-shrink:0;
+}
+.quiz-option:hover:not([disabled]){transform:translateY(-2px);background:#f7faff;}
+.quiz-option[disabled]{cursor:default;opacity:.85;}
+.quiz-option.correct{background:#d9f5e3;border-color:var(--green);}
+.quiz-option.correct .num{background:var(--green);color:#fff;border-color:var(--green);}
+.quiz-option.wrong{background:#fde2df;border-color:var(--coral);}
+.quiz-option.wrong .num{background:var(--coral);color:#fff;border-color:var(--coral);}
+.quiz-hint{
+  background:#fff8dc;border:2px dashed var(--gold);border-radius:12px;
+  padding:10px 14px;margin:10px 0;font-weight:700;color:var(--ink-soft);
+  font-family:'Nunito',sans-serif;font-size:.95rem;
+}
+.hint-btn{
+  font-family:'Baloo 2',cursive;font-weight:700;font-size:.9rem;
+  background:var(--gold);color:var(--ink);border:2px solid var(--ink);
+  border-radius:999px;padding:6px 14px;cursor:pointer;margin:6px 0;
+}
+.quiz-foot{display:flex;justify-content:space-between;gap:10px;margin-top:16px;flex-wrap:wrap;}
+.btn-next{
+  font-family:'Baloo 2',cursive;font-weight:800;font-size:1.05rem;
+  background:var(--blue);color:#fff;border:2.5px solid #1f4fa0;
+  border-bottom-width:5px;border-radius:14px;padding:10px 22px;cursor:pointer;
+}
+.btn-next:hover{transform:translateY(-2px);}
+.btn-next:active{transform:translateY(2px);border-bottom-width:2.5px;}
+.btn-secondary{
+  font-family:'Baloo 2',cursive;font-weight:700;font-size:.95rem;
+  background:#fff;color:var(--ink);border:2.5px solid var(--ink);
+  border-bottom-width:4px;border-radius:12px;padding:8px 16px;cursor:pointer;
+}
+.btn-secondary:hover{transform:translateY(-2px);}
+.results-score{
+  font-family:'Baloo 2',cursive;font-weight:800;font-size:2rem;
+  text-align:center;margin:10px 0;color:var(--ink);
+}
+.results-stars{text-align:center;font-size:2.2rem;margin:6px 0 12px;}
+.results-banner{
+  background:var(--gold);border:2.5px solid var(--ink);border-radius:14px;
+  padding:10px;text-align:center;font-family:'Baloo 2',cursive;font-weight:800;
+  color:var(--ink);margin:10px 0;
+}
+.review-list{margin-top:14px;border-top:2px dashed var(--paper-2);padding-top:12px;}
+.review-item{
+  background:var(--paper);border:2px solid var(--paper-2);border-radius:12px;
+  padding:10px 12px;margin:8px 0;font-size:.92rem;
+}
+.review-item.ok{border-color:var(--green);}
+.review-item.bad{border-color:var(--coral);}
+.review-q{font-family:'Baloo 2',cursive;font-weight:700;color:var(--ink);}
+.review-a{margin-top:4px;color:var(--ink-soft);font-weight:600;}
 </style>
 </head>
 <body>
@@ -215,6 +333,7 @@ h1{
   </div>
 </div>
 
+<script src="questions.js"></script>
 <script>
 /* ============================================================
    ⚙️  SPORTS CONFIG — THE ONLY THING YOU EDIT TO ADD A SPORT
@@ -272,19 +391,67 @@ const UI = {
       tagline:"Tap a sport. Tap a card to zoom in. You've got this! ⭐",
       f1:"Respect Everyone", f2:"Know the Rules", f3:"Be on Time", f4:"Have Fun",
       note:"Made for young athletes. Field/pool rules may vary slightly by league or age group.",
-      zoom:"tap to zoom", soon:"Coming soon"},
+      zoom:"tap to zoom", soon:"Coming soon",
+      quizTab:"Quiz", takeQuiz:"📝 Take Quiz", backToRules:"← Back to Rules",
+      pickSport:"Pick a sport:", difficulty:"Difficulty:", easy:"Easy", hard:"Hard",
+      easyDesc:"3 choices · hint available · obvious wrong answers",
+      hardDesc:"4 choices · no hints · sneaky wrong answers",
+      length:"Length:", all:"All", start:"Start Quiz ▶",
+      question:"Question", of:"of", hintBtn:"💡 Show Hint", hintHide:"💡 Hide Hint",
+      next:"Next ▶", finish:"See Score ▶",
+      tryAgain:"Try Again", reviewToggle:"Review Answers",
+      youGot:"You got", outOf:"out of", newBest:"🏆 New Best!",
+      bestLabel:"🏆 Best:", true_:"True", false_:"False",
+      yourAnswer:"Your answer:", correctAnswer:"Correct:",
+      quizLandingTitle:"Test Your Rules Knowledge",
+      quizLandingSub:"Pick a sport and difficulty to begin."},
   zh:{kicker:"聪明比赛 · 安全比赛 · 玩得开心", title:"儿童运动规则",
       tagline:"点击运动项目，点击卡片放大查看。你可以的！⭐",
       f1:"尊重他人", f2:"了解规则", f3:"准时到场", f4:"玩得开心",
       note:"为小小运动员制作。场地/泳池规则可能因联盟或年龄组略有不同。",
-      zoom:"点击放大", soon:"敬请期待"}
+      zoom:"点击放大", soon:"敬请期待",
+      quizTab:"小测验", takeQuiz:"📝 开始测验", backToRules:"← 返回规则",
+      pickSport:"选择项目：", difficulty:"难度：", easy:"简单", hard:"困难",
+      easyDesc:"3 个选项 · 可看提示 · 错误答案明显",
+      hardDesc:"4 个选项 · 无提示 · 错误答案更具迷惑性",
+      length:"题数：", all:"全部", start:"开始测验 ▶",
+      question:"第", of:"题，共", hintBtn:"💡 查看提示", hintHide:"💡 隐藏提示",
+      next:"下一题 ▶", finish:"查看成绩 ▶",
+      tryAgain:"再来一次", reviewToggle:"查看答案",
+      youGot:"你答对了", outOf:"题，共", newBest:"🏆 新纪录！",
+      bestLabel:"🏆 最佳：", true_:"对", false_:"错",
+      yourAnswer:"你的答案：", correctAnswer:"正确答案：",
+      quizLandingTitle:"测试你对规则的掌握",
+      quizLandingSub:"选择一个项目和难度开始。"}
 };
 
 let lang = "en";
 let activeId = SPORTS[0].id;
 let lbList = [], lbIdx = 0;
 
+const QUIZ_TAB_ID = "__quiz__";
+let quizState = null;
+// Quiz landing selections (persisted across re-renders of the landing screen)
+let quizPick = { sportId: SPORTS[0].id, difficulty: "easy", size: 10 };
+let quizPrevSportId = SPORTS[0].id; // where to return when leaving the quiz
+
 function t(key){ return UI[lang][key]; }
+
+function bestKey(sportId, difficulty, size){
+  return `sportsrules.best.${sportId}.${difficulty}.${size}`;
+}
+function getBest(sportId, difficulty, size){
+  try {
+    const raw = localStorage.getItem(bestKey(sportId, difficulty, size));
+    if(!raw) return null;
+    return JSON.parse(raw); // {score, total}
+  } catch(e){ return null; }
+}
+function setBest(sportId, difficulty, size, score, total){
+  try {
+    localStorage.setItem(bestKey(sportId, difficulty, size), JSON.stringify({score, total}));
+  } catch(e){}
+}
 
 function render(){
   // chrome text
@@ -298,22 +465,50 @@ function render(){
     const b=document.createElement("button");
     b.className="tab"+(s.id===activeId?" active":"");
     b.innerHTML=`<span class="emoji">${s.emoji}</span>${s.name[lang]}`;
-    b.onclick=()=>{activeId=s.id;render();window.scrollTo({top:0,behavior:"smooth"});};
+    b.onclick=()=>{
+      quizState=null;
+      activeId=s.id;
+      render();
+      window.scrollTo({top:0,behavior:"smooth"});
+    };
     tabs.appendChild(b);
   });
-  // a permanent "more coming" hint tab
-  const soon=document.createElement("button");
-  soon.className="tab soon";
-  soon.innerHTML=`<span class="emoji">➕</span>${t("soon")}`;
-  tabs.appendChild(soon);
+  // Quiz tab (replaces the old "coming soon" placeholder)
+  const qb=document.createElement("button");
+  qb.className="tab"+(activeId===QUIZ_TAB_ID?" active":"");
+  qb.innerHTML=`<span class="emoji">📝</span>${t("quizTab")}`;
+  qb.onclick=()=>{
+    quizState=null;
+    activeId=QUIZ_TAB_ID;
+    render();
+    window.scrollTo({top:0,behavior:"smooth"});
+  };
+  tabs.appendChild(qb);
 
-  // content
-  const sport=SPORTS.find(s=>s.id===activeId);
   const c=document.getElementById("content");
+
+  // Quiz mode
+  if(activeId===QUIZ_TAB_ID){
+    if(quizState && quizState.phase==="quiz") renderQuizQuestion(c);
+    else if(quizState && quizState.phase==="results") renderQuizResults(c);
+    else renderQuizLanding(c);
+    return;
+  }
+
+  // Rules content
+  const sport=SPORTS.find(s=>s.id===activeId);
+  const best = bestForSport(sport.id);
+  const bestBadge = best
+    ? `<span class="best-badge">${t("bestLabel")} ${best.score}/${best.total}</span>`
+    : "";
   c.innerHTML=`
     <div class="sport-head">
       <h2>${sport.emoji} ${sport.name[lang]}</h2>
       <p>${sport.sub[lang]}</p>
+      <div class="quiz-cta">
+        <button class="btn-quiz" onclick="startQuizFromSport('${sport.id}')">${t("takeQuiz")}</button>
+        ${bestBadge}
+      </div>
     </div>
     <div class="grid">
       ${sport.panels.map((p,i)=>`
@@ -323,6 +518,273 @@ function render(){
           <div class="cap">${p.cap[lang]} <span class="zoom-hint">· ${t("zoom")}</span></div>
         </div>`).join("")}
     </div>`;
+}
+
+// Best across any difficulty/size combo for a sport (for the rules-page badge)
+function bestForSport(sportId){
+  let best=null;
+  ["easy","hard"].forEach(d=>{
+    [10,20,"all"].forEach(s=>{
+      const b=getBest(sportId,d,s);
+      if(b && (!best || b.score/b.total > best.score/best.total)) best=b;
+    });
+  });
+  return best;
+}
+
+function startQuizFromSport(sportId){
+  quizPrevSportId = sportId;
+  quizPick.sportId = sportId;
+  quizState = null;
+  activeId = QUIZ_TAB_ID;
+  render();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+/* ---- Quiz landing ---- */
+function renderQuizLanding(c){
+  const sportButtons = SPORTS.map(s=>`
+    <button class="chip${s.id===quizPick.sportId?" on":""}" onclick="setQuizPick('sportId','${s.id}')">
+      ${s.emoji} ${s.name[lang]}
+    </button>`).join("");
+  const diff = quizPick.difficulty;
+  const sizeButtons = [10,20,"all"].map(s=>`
+    <button class="chip${quizPick.size===s?" on coral":""}" onclick="setQuizPick('size',${typeof s==='string'?`'${s}'`:s})">
+      ${s==="all"?t("all"):s}
+    </button>`).join("");
+  const pool = QUESTIONS[quizPick.sportId] || [];
+  const maxN = pool.length;
+  const effectiveSize = quizPick.size==="all" ? maxN : Math.min(quizPick.size, maxN);
+  const best = getBest(quizPick.sportId, quizPick.difficulty, quizPick.size);
+  const bestLine = best
+    ? `<div class="diff-desc">${t("bestLabel")} ${best.score}/${best.total}</div>`
+    : "";
+
+  c.innerHTML = `
+    <div class="sport-head">
+      <h2>📝 ${t("quizLandingTitle")}</h2>
+      <p>${t("quizLandingSub")}</p>
+    </div>
+    <div class="quiz-card">
+      <div class="quiz-row">
+        <label>${t("pickSport")}</label>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">${sportButtons}</div>
+      </div>
+      <div class="quiz-row">
+        <label>${t("difficulty")}</label>
+        <button class="chip${diff==="easy"?" on":""}" onclick="setQuizPick('difficulty','easy')">${t("easy")}</button>
+        <button class="chip${diff==="hard"?" on coral":""}" onclick="setQuizPick('difficulty','hard')">${t("hard")}</button>
+      </div>
+      <div class="diff-desc">${diff==="easy"?t("easyDesc"):t("hardDesc")}</div>
+      <div class="quiz-row" style="margin-top:14px;">
+        <label>${t("length")}</label>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">${sizeButtons}</div>
+      </div>
+      ${bestLine}
+      <div class="quiz-foot" style="justify-content:center;">
+        <button class="btn-next" onclick="startQuiz()">${t("start")}</button>
+      </div>
+    </div>`;
+}
+
+function setQuizPick(key, value){
+  quizPick[key] = value;
+  render();
+}
+
+/* ---- Quiz session ---- */
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]] = [a[j],a[i]];
+  }
+  return a;
+}
+
+function startQuiz(){
+  const pool = QUESTIONS[quizPick.sportId] || [];
+  if(pool.length===0){
+    alert("No questions for this sport yet.");
+    return;
+  }
+  const shuffled = shuffle(pool);
+  const size = quizPick.size==="all" ? shuffled.length : Math.min(quizPick.size, shuffled.length);
+  quizState = {
+    sportId: quizPick.sportId,
+    difficulty: quizPick.difficulty,
+    size: quizPick.size,
+    pool: shuffled.slice(0, size),
+    idx: 0,
+    answers: [],   // array of {qid, chosen, correct:boolean}
+    optionsCache: {},   // per-question cached shuffled options so re-renders don't reshuffle
+    showHint: false,
+    locked: false,
+    phase: "quiz"
+  };
+  render();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function buildOptions(q){
+  // Build full option list based on difficulty
+  if(q.type==="tf"){
+    return [{label:t("true_"), value:true}, {label:t("false_"), value:false}];
+  }
+  const distractors = quizState.difficulty==="easy"
+    ? (q.easyDistractors || q.hardDistractors || []).slice(0,2)
+    : (q.hardDistractors || q.easyDistractors || []).slice(0,3);
+  const raw = [q.answer, ...distractors];
+  return shuffle(raw).map(x=>({label:x, value:x}));
+}
+
+function renderQuizQuestion(c){
+  const q = quizState.pool[quizState.idx];
+  // Cache shuffled options so re-render keeps them stable
+  if(!quizState.optionsCache[quizState.idx]){
+    quizState.optionsCache[quizState.idx] = buildOptions(q);
+  }
+  const opts = quizState.optionsCache[quizState.idx];
+  const total = quizState.pool.length;
+  const progress = Math.round(((quizState.idx) / total) * 100);
+  const sport = SPORTS.find(s=>s.id===quizState.sportId);
+
+  const answered = quizState.locked;
+  const chosen = answered ? quizState.answers[quizState.idx].chosen : null;
+
+  const optionsHtml = opts.map((opt,i)=>{
+    let cls = "quiz-option";
+    if(answered){
+      if(opt.value === q.answer) cls += " correct";
+      else if(opt.value === chosen) cls += " wrong";
+    }
+    const safeLabel = String(opt.label).replace(/"/g,"&quot;");
+    return `<button class="${cls}" data-idx="${i}" ${answered?"disabled":""} onclick="answerQuiz(${i})">
+      <span class="num">${i+1}</span>
+      <span>${safeLabel}</span>
+    </button>`;
+  }).join("");
+
+  const showHintBtn = quizState.difficulty==="easy" && q.hint && !answered;
+  const hintHtml = showHintBtn
+    ? `<button class="hint-btn" onclick="toggleHint()">${quizState.showHint?t("hintHide"):t("hintBtn")}</button>
+       ${quizState.showHint?`<div class="quiz-hint">💡 ${q.hint}</div>`:""}`
+    : "";
+
+  const imgHtml = (q.type==="image" && q.img)
+    ? `<img class="quiz-img" src="${q.img}" alt="">`
+    : "";
+
+  const isLast = quizState.idx === total - 1;
+  const nextHtml = answered
+    ? `<button class="btn-next" onclick="advanceQuiz()">${isLast?t("finish"):t("next")}</button>`
+    : "<span></span>";
+
+  const colsClass = opts.length >= 3 ? "cols-2" : "";
+
+  c.innerHTML = `
+    <div class="sport-head">
+      <h2>${sport.emoji} ${sport.name[lang]}</h2>
+      <p>${quizState.difficulty==="easy"?t("easy"):t("hard")}</p>
+    </div>
+    <div class="quiz-card">
+      <div class="quiz-progress">${t("question")} ${quizState.idx+1} ${t("of")} ${total}</div>
+      <div class="progress-bar"><div style="width:${progress}%"></div></div>
+      <div class="quiz-prompt">${q.prompt}</div>
+      ${imgHtml}
+      ${hintHtml}
+      <div class="quiz-options ${colsClass}">${optionsHtml}</div>
+      <div class="quiz-foot">
+        <button class="btn-secondary" onclick="exitQuiz()">${t("backToRules")}</button>
+        ${nextHtml}
+      </div>
+    </div>`;
+}
+
+function answerQuiz(optIdx){
+  if(quizState.locked) return;
+  const q = quizState.pool[quizState.idx];
+  const opts = quizState.optionsCache[quizState.idx];
+  const chosen = opts[optIdx].value;
+  const correct = (chosen === q.answer);
+  quizState.answers[quizState.idx] = {qid: q.id, chosen, correct};
+  quizState.locked = true;
+  render();
+}
+
+function toggleHint(){
+  quizState.showHint = !quizState.showHint;
+  render();
+}
+
+function advanceQuiz(){
+  if(quizState.idx < quizState.pool.length - 1){
+    quizState.idx += 1;
+    quizState.locked = false;
+    quizState.showHint = false;
+    render();
+    window.scrollTo({top:0,behavior:"smooth"});
+  } else {
+    quizState.phase = "results";
+    render();
+    window.scrollTo({top:0,behavior:"smooth"});
+  }
+}
+
+function exitQuiz(){
+  quizState = null;
+  activeId = quizPrevSportId || SPORTS[0].id;
+  render();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function renderQuizResults(c){
+  const total = quizState.pool.length;
+  const score = quizState.answers.filter(a=>a && a.correct).length;
+  const sport = SPORTS.find(s=>s.id===quizState.sportId);
+  const pct = score/total;
+  const stars = pct >= 0.9 ? "⭐⭐⭐" : pct >= 0.7 ? "⭐⭐" : pct >= 0.5 ? "⭐" : "💪";
+
+  const prevBest = getBest(quizState.sportId, quizState.difficulty, quizState.size);
+  const isNewBest = !prevBest || score > prevBest.score
+    || (score === prevBest.score && total > prevBest.total);
+  if(isNewBest) setBest(quizState.sportId, quizState.difficulty, quizState.size, score, total);
+
+  const reviewHtml = quizState.pool.map((q,i)=>{
+    const a = quizState.answers[i] || {};
+    const okCls = a.correct ? "ok" : "bad";
+    const userAns = a.chosen===true ? t("true_") : a.chosen===false ? t("false_") : (a.chosen ?? "—");
+    const corrAns = q.answer===true ? t("true_") : q.answer===false ? t("false_") : q.answer;
+    return `<div class="review-item ${okCls}">
+      <div class="review-q">${i+1}. ${q.prompt}</div>
+      <div class="review-a">${t("yourAnswer")} ${userAns}</div>
+      ${a.correct?"":`<div class="review-a">${t("correctAnswer")} ${corrAns}</div>`}
+    </div>`;
+  }).join("");
+
+  c.innerHTML = `
+    <div class="sport-head">
+      <h2>${sport.emoji} ${sport.name[lang]}</h2>
+      <p>${quizState.difficulty==="easy"?t("easy"):t("hard")}</p>
+    </div>
+    <div class="quiz-card">
+      <div class="results-stars">${stars}</div>
+      <div class="results-score">${t("youGot")} ${score} ${t("outOf")} ${total}!</div>
+      ${isNewBest?`<div class="results-banner">${t("newBest")}</div>`:""}
+      <div class="quiz-foot" style="justify-content:center;">
+        <button class="btn-next" onclick="startQuiz()">${t("tryAgain")}</button>
+        <button class="btn-secondary" onclick="exitQuiz()">${t("backToRules")}</button>
+        <button class="btn-secondary" onclick="toggleReview()">${t("reviewToggle")}</button>
+      </div>
+      <div id="reviewArea" style="display:${quizState.showReview?"block":"none"}">
+        <div class="review-list">${reviewHtml}</div>
+      </div>
+    </div>`;
+}
+
+function toggleReview(){
+  quizState.showReview = !quizState.showReview;
+  render();
 }
 
 function setLang(l){
@@ -353,10 +815,27 @@ function closeLb(){
   document.body.style.overflow="";
 }
 document.addEventListener("keydown",e=>{
-  if(!document.getElementById("lb").classList.contains("show"))return;
-  if(e.key==="Escape")closeLb();
-  if(e.key==="ArrowRight")lbStep(1);
-  if(e.key==="ArrowLeft")lbStep(-1);
+  // Lightbox keys
+  if(document.getElementById("lb").classList.contains("show")){
+    if(e.key==="Escape")closeLb();
+    if(e.key==="ArrowRight")lbStep(1);
+    if(e.key==="ArrowLeft")lbStep(-1);
+    return;
+  }
+  // Quiz keys: 1-4 select an option, Enter advances after answering
+  if(quizState && quizState.phase==="quiz"){
+    if(e.key>="1" && e.key<="4"){
+      const idx = parseInt(e.key,10)-1;
+      const opts = quizState.optionsCache[quizState.idx];
+      if(opts && idx < opts.length && !quizState.locked){
+        answerQuiz(idx);
+        e.preventDefault();
+      }
+    } else if(e.key==="Enter" && quizState.locked){
+      advanceQuiz();
+      e.preventDefault();
+    }
+  }
 });
 /* swipe on lightbox */
 let tx=0;

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>Game Rules for Kids</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ⚙️  ADD-A-SPORT CONFIG  —  edit ONLY the SPORTS array below.
+   To add a new sport:
+     1. Drop your panel images into the /images folder.
+     2. Add a new {...} block to the SPORTS array (see script at bottom).
+     3. List each image filename under "panels". Done — tabs rebuild.
+   No other code needs to change.
+   ============================================================ */
+:root{
+  --ink:#15294d;
+  --ink-soft:#3a4a6b;
+  --paper:#fbf7ee;
+  --paper-2:#f3ecdc;
+  --blue:#2f6fd6;
+  --blue-bright:#6fb1fc;
+  --green:#2e8b57;
+  --coral:#ff6b5e;
+  --gold:#ffc14d;
+  --shadow:rgba(21,41,77,.16);
+  --tab-active:#fff;
+}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{
+  margin:0;
+  font-family:'Nunito',system-ui,sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at 12% 8%, rgba(111,177,252,.20), transparent 38%),
+    radial-gradient(circle at 88% 4%, rgba(255,193,77,.20), transparent 34%),
+    radial-gradient(circle at 50% 120%, rgba(46,139,87,.16), transparent 50%),
+    var(--paper);
+  background-attachment:fixed;
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+}
+/* subtle dotted paper texture */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:radial-gradient(rgba(21,41,77,.05) 1px, transparent 1px);
+  background-size:22px 22px;
+}
+.wrap{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:18px 14px 60px;}
+
+/* ---------- HEADER ---------- */
+header{text-align:center;padding:14px 8px 6px;}
+.kicker{
+  display:inline-block;font-family:'Baloo 2',cursive;font-weight:700;
+  font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--blue);background:#fff;border:2px solid var(--blue-bright);
+  padding:5px 14px;border-radius:999px;box-shadow:0 3px 0 var(--blue-bright);
+}
+h1{
+  font-family:'Baloo 2',cursive;font-weight:800;
+  font-size:clamp(2rem,7vw,3.4rem);line-height:1.02;margin:12px 0 4px;
+  color:var(--ink);
+  text-shadow:0 2px 0 #fff, 0 4px 0 rgba(111,177,252,.5);
+}
+.tagline{font-weight:700;color:var(--ink-soft);font-size:clamp(.95rem,3.4vw,1.15rem);margin:0;}
+
+/* ---------- LANGUAGE TOGGLE ---------- */
+.lang-bar{display:flex;justify-content:center;margin:16px 0 4px;}
+.lang-toggle{
+  display:inline-flex;background:#fff;border:2px solid var(--ink);
+  border-radius:999px;padding:4px;box-shadow:0 3px 0 var(--shadow);
+}
+.lang-toggle button{
+  font-family:'Baloo 2',cursive;font-weight:700;font-size:.95rem;
+  border:none;background:transparent;color:var(--ink-soft);
+  padding:7px 18px;border-radius:999px;cursor:pointer;transition:.18s;
+}
+.lang-toggle button.on{background:var(--blue);color:#fff;box-shadow:0 2px 6px rgba(47,111,214,.4);}
+
+/* ---------- SPORT TABS ---------- */
+.tabs{
+  display:flex;gap:10px;flex-wrap:wrap;justify-content:center;
+  margin:22px 0 8px;
+}
+.tab{
+  font-family:'Baloo 2',cursive;font-weight:700;font-size:1.02rem;
+  display:inline-flex;align-items:center;gap:8px;
+  background:#fff;color:var(--ink-soft);
+  border:2.5px solid var(--ink);border-bottom-width:5px;
+  padding:11px 20px;border-radius:16px;cursor:pointer;
+  transition:transform .12s, box-shadow .12s, background .12s;
+  user-select:none;
+}
+.tab .emoji{font-size:1.25rem;line-height:1;}
+.tab:hover{transform:translateY(-2px);}
+.tab:active{transform:translateY(2px);border-bottom-width:2.5px;}
+.tab.active{background:var(--blue);color:#fff;border-color:#1f4fa0;box-shadow:0 6px 0 #1f4fa0;}
+.tab.soon{opacity:.55;cursor:default;border-style:dashed;}
+.tab.soon:hover{transform:none;}
+
+/* ---------- PANEL INTRO ---------- */
+.sport-head{
+  text-align:center;margin:26px 0 6px;animation:rise .4s ease both;
+}
+.sport-head h2{
+  font-family:'Baloo 2',cursive;font-size:clamp(1.5rem,5vw,2.1rem);
+  margin:0;color:var(--ink);
+}
+.sport-head p{margin:4px 0 0;font-weight:700;color:var(--ink-soft);}
+
+/* ---------- PANEL GRID ---------- */
+.grid{
+  display:grid;grid-template-columns:1fr;gap:18px;margin-top:18px;
+}
+@media(min-width:680px){.grid{grid-template-columns:1fr 1fr;}}
+.card{
+  background:#fff;border:2.5px solid var(--ink);border-radius:20px;
+  overflow:hidden;box-shadow:0 6px 0 var(--shadow);
+  cursor:zoom-in;transition:transform .14s, box-shadow .14s;
+  animation:rise .5s ease both;
+}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 22px rgba(21,41,77,.22);}
+.card:active{transform:translateY(0);}
+.card .num{
+  position:absolute;margin:10px;width:34px;height:34px;border-radius:50%;
+  background:var(--gold);color:var(--ink);font-family:'Baloo 2',cursive;
+  font-weight:800;display:flex;align-items:center;justify-content:center;
+  border:2.5px solid var(--ink);font-size:1.05rem;z-index:2;
+}
+.card img{display:block;width:100%;height:auto;background:var(--paper-2);}
+.card .cap{
+  font-family:'Baloo 2',cursive;font-weight:600;color:var(--ink-soft);
+  text-align:center;padding:9px 12px 12px;font-size:.95rem;
+  border-top:2px dashed var(--paper-2);
+}
+.zoom-hint{font-size:.78rem;opacity:.7;font-weight:700;}
+
+/* ---------- LIGHTBOX ---------- */
+.lb{
+  position:fixed;inset:0;z-index:50;display:none;
+  background:rgba(15,28,58,.92);
+  align-items:center;justify-content:center;flex-direction:column;
+  padding:14px;backdrop-filter:blur(3px);
+}
+.lb.show{display:flex;animation:fade .2s ease;}
+.lb img{max-width:100%;max-height:82vh;border-radius:14px;
+  box-shadow:0 14px 40px rgba(0,0,0,.5);background:#fff;}
+.lb-bar{display:flex;gap:14px;align-items:center;margin-top:16px;}
+.lb-bar button{
+  font-family:'Baloo 2',cursive;font-weight:700;font-size:1.4rem;
+  width:54px;height:54px;border-radius:50%;border:none;cursor:pointer;
+  background:#fff;color:var(--ink);box-shadow:0 4px 0 rgba(0,0,0,.3);
+}
+.lb-bar button:active{transform:translateY(3px);box-shadow:none;}
+.lb-bar .count{color:#fff;font-family:'Baloo 2',cursive;font-weight:700;font-size:1.1rem;min-width:54px;text-align:center;}
+.lb-close{position:absolute;top:14px;right:16px;font-size:1.6rem;width:50px;height:50px;}
+
+/* ---------- FOOTER STRIP ---------- */
+.foot{
+  margin-top:36px;text-align:center;background:var(--ink);color:#fff;
+  border-radius:18px;padding:18px 16px;
+  font-family:'Baloo 2',cursive;font-weight:700;
+  display:flex;gap:18px;flex-wrap:wrap;justify-content:center;align-items:center;
+}
+.foot .pill{display:inline-flex;align-items:center;gap:7px;font-size:.98rem;}
+.foot .pill .e{font-size:1.2rem;}
+.note{text-align:center;color:var(--ink-soft);font-size:.78rem;margin-top:18px;opacity:.8;}
+
+@keyframes rise{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fade{from{opacity:0;}to{opacity:1;}}
+.card{position:relative;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="kicker" data-t="kicker">Play Smart · Play Safe · Have Fun</span>
+    <h1 data-t="title">Game Rules for Kids</h1>
+    <p class="tagline" data-t="tagline">Tap a sport. Tap a card to zoom in. You've got this! ⭐</p>
+  </header>
+
+  <div class="lang-bar">
+    <div class="lang-toggle" role="tablist" aria-label="Language">
+      <button id="langEn" class="on" onclick="setLang('en')">EN</button>
+      <button id="langZh" onclick="setLang('zh')">中文</button>
+    </div>
+  </div>
+
+  <nav class="tabs" id="tabs"></nav>
+
+  <main id="content"></main>
+
+  <div class="foot">
+    <span class="pill"><span class="e">🤝</span><span data-t="f1">Respect Everyone</span></span>
+    <span class="pill"><span class="e">📋</span><span data-t="f2">Know the Rules</span></span>
+    <span class="pill"><span class="e">⏱️</span><span data-t="f3">Be on Time</span></span>
+    <span class="pill"><span class="e">❤️</span><span data-t="f4">Have Fun</span></span>
+  </div>
+
+  <p class="note" data-t="note">Made for young athletes. Field/pool rules may vary slightly by league or age group.</p>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb" onclick="if(event.target===this)closeLb()">
+  <button class="lb-bar lb-close" style="position:absolute;" onclick="closeLb()" aria-label="Close">✕</button>
+  <img id="lbImg" src="" alt="">
+  <div class="lb-bar">
+    <button onclick="lbStep(-1)" aria-label="Previous">‹</button>
+    <span class="count" id="lbCount"></span>
+    <button onclick="lbStep(1)" aria-label="Next">›</button>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   ⚙️  SPORTS CONFIG — THE ONLY THING YOU EDIT TO ADD A SPORT
+   ------------------------------------------------------------
+   Each sport: { id, emoji, name{en,zh}, sub{en,zh}, panels:[...] }
+   Each panel: { img:"images/yourfile.png", cap:{en,zh} }
+   To add a sport, copy a block, change the values, list your images.
+   ============================================================ */
+const SPORTS = [
+  {
+    id:"flag",
+    emoji:"🏈",
+    name:{en:"Flag Football", zh:"腰旗橄榄球"},
+    sub:{en:"Pull the flag. No tackling. Have fun!", zh:"拉旗子，不擒抱，玩得开心！"},
+    panels:[
+      {img:"images/Flag_Football_1.png", cap:{en:"Field & Game Flow",        zh:"场地与比赛流程"}},
+      {img:"images/Flag_Football_2.png", cap:{en:"Player Roles, Stance & Rules", zh:"球员角色、姿势与规则"}},
+      {img:"images/Flag_Football_3.png", cap:{en:"Basic Drills",             zh:"基础训练"}},
+      {img:"images/Flag_Football_4.png", cap:{en:"Basic Tactics",            zh:"跑位战术"}},
+      {img:"images/Flag_Football_5.png", cap:{en:"Technique Tips",           zh:"动作小技巧"}}
+    ]
+  },
+  {
+    id:"swim",
+    emoji:"🏊",
+    name:{en:"Swimming", zh:"游泳"},
+    sub:{en:"Know the steps. Stay calm. Swim your best!", zh:"了解流程，保持冷静，游出最佳！"},
+    panels:[
+      {img:"images/Swimming_1.png", cap:{en:"My Swim Meet Day",            zh:"我的比赛日"}},
+      {img:"images/Swimming_2.png", cap:{en:"Start Rules",                 zh:"出发规则"}},
+      {img:"images/Swimming_3.png", cap:{en:"General Race Rules",          zh:"通用比赛规则"}},
+      {img:"images/Swimming_4.png", cap:{en:"Disqualification Rules",      zh:"取消资格规则"}},
+      {img:"images/Swimming_5.png", cap:{en:"Freestyle & Backstroke",      zh:"自由泳与仰泳"}},
+      {img:"images/Swimming_6.png", cap:{en:"Breaststroke & Butterfly",    zh:"蛙泳与蝶泳"}},
+      {img:"images/swimming_7.png", cap:{en:"Relay Rules",                 zh:"接力规则"}},
+      {img:"images/Swimming_8.png", cap:{en:"Sportsmanship & Etiquette",   zh:"体育精神与礼仪"}}
+    ]
+  }
+  /* ── EXAMPLE: add a future sport ──────────────────────────
+  ,{
+    id:"soccer",
+    emoji:"⚽",
+    name:{en:"Soccer", zh:"足球"},
+    sub:{en:"Pass. Move. Score!", zh:"传球，跑动，进球！"},
+    panels:[
+      {img:"images/Soccer_1.png", cap:{en:"The Field", zh:"球场"}}
+    ]
+  }
+  ───────────────────────────────────────────────────────── */
+];
+
+/* UI label translations (chrome only — images keep their own text) */
+const UI = {
+  en:{kicker:"Play Smart · Play Safe · Have Fun", title:"Game Rules for Kids",
+      tagline:"Tap a sport. Tap a card to zoom in. You've got this! ⭐",
+      f1:"Respect Everyone", f2:"Know the Rules", f3:"Be on Time", f4:"Have Fun",
+      note:"Made for young athletes. Field/pool rules may vary slightly by league or age group.",
+      zoom:"tap to zoom", soon:"Coming soon"},
+  zh:{kicker:"聪明比赛 · 安全比赛 · 玩得开心", title:"儿童运动规则",
+      tagline:"点击运动项目，点击卡片放大查看。你可以的！⭐",
+      f1:"尊重他人", f2:"了解规则", f3:"准时到场", f4:"玩得开心",
+      note:"为小小运动员制作。场地/泳池规则可能因联盟或年龄组略有不同。",
+      zoom:"点击放大", soon:"敬请期待"}
+};
+
+let lang = "en";
+let activeId = SPORTS[0].id;
+let lbList = [], lbIdx = 0;
+
+function t(key){ return UI[lang][key]; }
+
+function render(){
+  // chrome text
+  document.documentElement.lang = lang==="zh"?"zh":"en";
+  document.querySelectorAll("[data-t]").forEach(el=>{
+    const k=el.getAttribute("data-t"); if(UI[lang][k]) el.textContent=UI[lang][k];
+  });
+  // tabs
+  const tabs=document.getElementById("tabs"); tabs.innerHTML="";
+  SPORTS.forEach(s=>{
+    const b=document.createElement("button");
+    b.className="tab"+(s.id===activeId?" active":"");
+    b.innerHTML=`<span class="emoji">${s.emoji}</span>${s.name[lang]}`;
+    b.onclick=()=>{activeId=s.id;render();window.scrollTo({top:0,behavior:"smooth"});};
+    tabs.appendChild(b);
+  });
+  // a permanent "more coming" hint tab
+  const soon=document.createElement("button");
+  soon.className="tab soon";
+  soon.innerHTML=`<span class="emoji">➕</span>${t("soon")}`;
+  tabs.appendChild(soon);
+
+  // content
+  const sport=SPORTS.find(s=>s.id===activeId);
+  const c=document.getElementById("content");
+  c.innerHTML=`
+    <div class="sport-head">
+      <h2>${sport.emoji} ${sport.name[lang]}</h2>
+      <p>${sport.sub[lang]}</p>
+    </div>
+    <div class="grid">
+      ${sport.panels.map((p,i)=>`
+        <div class="card" style="animation-delay:${i*60}ms" onclick="openLb('${sport.id}',${i})">
+          <span class="num">${i+1}</span>
+          <img loading="lazy" src="${p.img}" alt="${p.cap[lang]}">
+          <div class="cap">${p.cap[lang]} <span class="zoom-hint">· ${t("zoom")}</span></div>
+        </div>`).join("")}
+    </div>`;
+}
+
+function setLang(l){
+  lang=l;
+  document.getElementById("langEn").classList.toggle("on",l==="en");
+  document.getElementById("langZh").classList.toggle("on",l==="zh");
+  render();
+  if(document.getElementById("lb").classList.contains("show")) updateLb();
+}
+
+/* ---- lightbox ---- */
+function openLb(sportId,idx){
+  const sport=SPORTS.find(s=>s.id===sportId);
+  lbList=sport.panels; lbIdx=idx;
+  document.getElementById("lb").classList.add("show");
+  document.body.style.overflow="hidden";
+  updateLb();
+}
+function updateLb(){
+  const p=lbList[lbIdx];
+  document.getElementById("lbImg").src=p.img;
+  document.getElementById("lbImg").alt=p.cap[lang];
+  document.getElementById("lbCount").textContent=(lbIdx+1)+" / "+lbList.length;
+}
+function lbStep(d){ lbIdx=(lbIdx+d+lbList.length)%lbList.length; updateLb(); }
+function closeLb(){
+  document.getElementById("lb").classList.remove("show");
+  document.body.style.overflow="";
+}
+document.addEventListener("keydown",e=>{
+  if(!document.getElementById("lb").classList.contains("show"))return;
+  if(e.key==="Escape")closeLb();
+  if(e.key==="ArrowRight")lbStep(1);
+  if(e.key==="ArrowLeft")lbStep(-1);
+});
+/* swipe on lightbox */
+let tx=0;
+document.getElementById("lb").addEventListener("touchstart",e=>{tx=e.touches[0].clientX;},{passive:true});
+document.getElementById("lb").addEventListener("touchend",e=>{
+  const dx=e.changedTouches[0].clientX-tx;
+  if(Math.abs(dx)>50)lbStep(dx<0?1:-1);
+},{passive:true});
+
+render();
+</script>
+</body>
+</html>
